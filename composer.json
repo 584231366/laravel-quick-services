@@ -1,0 +1,14 @@
+{
+    "name": "yawning-cat/service-module",
+    "description": "service module",
+    "type": "module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BillTang",
+            "email": "584231366@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
