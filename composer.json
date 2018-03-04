@@ -13,7 +13,7 @@
     "require": {},
     "autoload": {
         "classmap": [
-            "vendor/YawningCat/ServiceModule/src/database"
+            "src/database"
         ],
         "psr-4": {
             "ServiceExtention\\": "src/"
