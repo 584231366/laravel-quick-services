@@ -11,7 +11,10 @@
     ],
     "minimum-stability": "dev",
     "require": {},
-    "autoload-dev": {
+    "autoload": {
+        "classmap": [
+            "vendor/YawningCat/ServiceModule/src/database"
+        ],
         "psr-4": {
             "ServiceExtention\\": "vendor/YawningCat/ServiceModule/src"
         }
