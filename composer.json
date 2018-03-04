@@ -16,7 +16,7 @@
             "vendor/YawningCat/ServiceModule/src/database"
         ],
         "psr-4": {
-            "ServiceExtention\\": "vendor/YawningCat/ServiceModule/src"
+            "ServiceExtention\\": "src/"
         }
     }
 }
