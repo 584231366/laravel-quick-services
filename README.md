@@ -6,16 +6,24 @@
 2. 在config/app.php内配置
 
 	'providers' => [
+
 		...
+
 		ServiceExtention\ServicesProvider::class
+
 	]
+
 	...
+
 	'aliases' => [
+
 		...
+
 		ServiceExtention\Facades\Service::class
+		
 	]
+
 3. php artisan migrate
-4. 'UserService'=>ServiceExtention\Facades\Service::class
 
 ## 服务模块函数
  - 服务类型: 1:有效期服务 2:次数服务
