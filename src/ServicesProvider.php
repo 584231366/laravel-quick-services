@@ -13,7 +13,7 @@ class ServicesProvider extends ServiceProvider
      */
     public function boot()
     {
-        echo 'ServicesProvider';
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
     }
 
     /**
@@ -23,6 +23,8 @@ class ServicesProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+    	$this->app->singleton('Service', function ($app) {
+    		return new Classes\Service();
+    	});
     }
 }
