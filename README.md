@@ -1,16 +1,24 @@
 ## Laravel-Services
-  这是一个service管理模块,提供服务时长和服务次数的管理。包含服务表，服务属性，服务日志，服务状态。一切的服务状态从服务日志的记录计算获取。服务日志便于观察用户服务的变更等情况。以及组合使用与各种场景。
+  这是一个service管理模块,提供服务时长和服务次数的管理。包含服务表，服务属性，服务日志，服务状态。一切的服务状态从服务日志的记录计算获取。服务日志便于观察用户服务的变更等情况。以及组合使用于各种场景。
 
 ## 安装步骤
 1. composer require yawning-cat/service-module
 2. 在config/app.php内配置
-   'providers' => [ 
+
+   'providers' => [
+
    		...
+
    		ServiceExtention\ServicesProvider::class
+
    ]
+
    ...
+
    'aliases' => [
+
       ...
+      
       ServiceExtention\Facades\Service::class
 
    ]
