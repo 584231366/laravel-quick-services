@@ -5,23 +5,15 @@
 1. composer require yawning-cat/service-module
 2. 在config/app.php内配置
 
-   'providers' => [
-
-   		...
-
-   		ServiceExtention\ServicesProvider::class
-
-   ]
-
-   ...
-
-   'aliases' => [
-
-      ...
-      
-      ServiceExtention\Facades\Service::class
-
-   ]
+	'providers' => [
+		...
+		ServiceExtention\ServicesProvider::class
+	]
+	...
+	'aliases' => [
+		...
+		ServiceExtention\Facades\Service::class
+	]
 3. php artisan migrate
 4. 'UserService'=>ServiceExtention\Facades\Service::class
 
