@@ -5,7 +5,7 @@ use ServiceExtention\Models\Service as ServiceModel;
 use ServiceExtention\Models\ServiceLog;
 use Log;
 use ServiceExtention\Models\ServiceOfUser;
-
+use DB;
 class Service{
 	/**
 	 * 增加服务天数或日期
@@ -15,7 +15,7 @@ class Service{
 	 * @param string $memo
 	 * @return boolean
 	 */
-	public function increase($user_id,$service_id,$num,$memo = ''){
+	public function increase($user_id,$service_id,$num,$memo = null){
 		$service=ServiceModel::where(['service_id'=>$service_id])->first();
 		if ($service) {
 			switch ($service->service_type) {
@@ -24,12 +24,16 @@ class Service{
 				case 2:
 					return $this->increaseTimes($user_id, $service_id, $num, $memo);
 				default:
-					Log::error('服务类型不存在！');
-					abort(500,'服务类型不存在！');
+					return [
+						'success'=>false,
+						'message'=>'服务类型'.$service->service_type.'服务类型不存在!'
+					];
 			}
 		}else{
-			Log::error('服务不存在！');
-			abort(500,'服务不存在！');
+			return [
+				'success'=>false,
+				'message'=>'ID'.$service_id.'的服务不存在！'
+			];
 		}
 	}
 	/**
@@ -40,7 +44,7 @@ class Service{
 	 * @param string $memo
 	 * @return boolean
 	 */
-	public function reduce($user_id,$service_id,$num,$memo = ''){
+	public function reduce($user_id,$service_id,$num,$memo = null){
 		$service=ServiceModel::where(['service_id'=>$service_id])->first();
 		if ($service) {
 			switch ($service->service_type) {
@@ -49,12 +53,16 @@ class Service{
 				case 2:
 					return $this->reduceTimes($user_id, $service_id, $num, $memo);
 				default:
-					Log::error('服务类型不存在！');
-					abort(500);
+					return [
+						'success'=>false,
+						'message'=>'服务类型不存在!'
+					];
 			}
 		}else{
-			Log::error('服务不存在！');
-			abort(500);
+			return [
+				'success'=>false,
+				'message'=>'ID'.$service_id.'的服务不存在！'
+			];
 		}
 	}
 	/**
@@ -65,7 +73,7 @@ class Service{
 	 * @param string $memo
 	 */
 	
-	public function increaseDays($user_id,$service_id,$num,$memo = ''){
+	private function increaseDays($user_id,$service_id,$num,String $memo = null){
 		$s=ServiceLog::create([
 				'user_id'	=>$user_id,
 				'service_id'=>$service_id,
@@ -73,7 +81,17 @@ class Service{
 				'memo'		=>$memo,
 				'service_log_type'=>0
 		]);
-		return $s?true:false;
+		if ($s) {
+			return [
+				'success'=>true,
+				'message'=>'服务成功延长'.$num.'天!'
+			];
+		}else{
+			return [
+				'success'=>false,
+				'message'=>'服务延长'.$num.'天失败!'
+			];
+		}
 	}
 	/**
 	 * 增加服务的次数
@@ -82,7 +100,7 @@ class Service{
 	 * @param unknown $num
 	 * @param string $memo
 	 */
-	public function increaseTimes($user_id,$service_id, $num, $memo = ''){
+	private function increaseTimes($user_id,$service_id, $num, $memo = null){
 		$s=ServiceLog::create([
 				'user_id'	=>$user_id,
 				'service_id'=>$service_id,
@@ -90,7 +108,17 @@ class Service{
 				'memo'		=>$memo,
 				'service_log_type'=>0
 		]);
-		return $s?true:false;
+		if ($s) {
+			return [
+					'success'=>true,
+					'message'=>'成功增加服务次数'.$num.'次!'
+			];
+		}else{
+			return [
+					'success'=>false,
+					'message'=>'增加服务次数'.$num.'次失败!'
+			];
+		}
 	}
 	/**
 	 * 减少服务的天数
@@ -99,7 +127,7 @@ class Service{
 	 * @param unknown $num
 	 * @param string $memo
 	 */
-	public function reduceDays($user_id,$service_id, $num, $memo = ''){
+	private function reduceDays($user_id,$service_id, $num, $memo = null){
 		$s=ServiceLog::create([
 				'user_id'	=>$user_id,
 				'service_id'=>$service_id,
@@ -107,7 +135,17 @@ class Service{
 				'memo'		=>$memo,
 				'service_log_type'=>1
 		]);
-		return $s?true:false;
+		if ($s) {
+			return [
+					'success'=>true,
+					'message'=>'服务成功缩短'.$num.'天!'
+			];
+		}else{
+			return [
+					'success'=>false,
+					'message'=>'服务缩短'.$num.'天失败!'
+			];
+		}
 	}
 	/**
 	 * 减少服务的次数
@@ -116,7 +154,7 @@ class Service{
 	 * @param unknown $num
 	 * @param string $memo
 	 */
-	public function reduceTimes($user_id,$service_id, $num, $memo = ''){
+	private function reduceTimes($user_id,$service_id, $num, $memo = null){
 		$s=ServiceLog::create([
 				'user_id'	=>$user_id,
 				'service_id'=>$service_id,
@@ -124,9 +162,23 @@ class Service{
 				'memo'		=>$memo,
 				'service_log_type'=>1
 		]);
-		return $s?true:false;
+		if ($s) {
+			return [
+					'success'=>true,
+					'message'=>'成功减少服务次数'.$num.'次!'
+			];
+		}else{
+			return [
+					'success'=>false,
+					'message'=>'减少服务次数'.$num.'次失败!'
+			];
+		}
 	}
-	// 获取用户的所有服务信息
+	/**
+	 * 获取用户的所有服务信息
+	 * @param unknown $user_id
+	 * @return unknown
+	 */
 	public function getServicesOfUser($user_id){
 		return ServiceModel::crossjoin('service_of_user','service_of_user.service_id','=','service.service_id')
 			->where([
@@ -138,11 +190,17 @@ class Service{
 					'service.service_type',
 					'service_of_user.start_at',
 					'service_of_user.expirated_at',
+					DB::raw('IF(DATEDIFF(service_of_user.expirated_at,service_of_user.start_at) > 0,DATEDIFF(service_of_user.expirated_at,service_of_user.start_at),0) as last_days'),
 					'service_of_user.times'
 			])
 			->get();
 	}
-	// 获取用户的指定服务信息
+	/**
+	 * 取用户的指定服务信息
+	 * @param unknown $user_id
+	 * @param unknown $service_id
+	 * @return unknown
+	 */
 	public function getServiceOfUser($user_id, $service_id){
 		return ServiceModel::crossjoin('service_of_user','service_of_user.service_id','=','service.service_id')
 			->where([
@@ -155,9 +213,58 @@ class Service{
 				'service.service_type',
 				'service_of_user.start_at',
 				'service_of_user.expirated_at',
+				DB::raw('DATEDIFF(service_of_user.expirated_at,service_of_user.start_at) as last_days'),
 				'service_of_user.times'
 			])
 			->first();
+	}
+	/**
+	 * 服务转换
+	 * @param unknown $user_id
+	 * @param unknown $old_service_id
+	 * @param unknown $new_service_id
+	 * @param number $reduce_old_num 默认为旧服务的天数/次数
+	 * @param number $increase_new_num 默认为旧服务的天数/次数
+	 * @return boolean[]|string[]
+	 */
+	public function changeService($user_id,$old_service_id,$new_service_id,$reduce_old_num = 0,$increase_new_num = 0) {
+		$oldService = ServiceModel::where(['service_id'=>$old_service_id])->first();
+		$newService = ServiceModel::where(['service_id'=>$new_service_id])->first();
+		if ($oldService && $newService) {
+			$userService = $this->getServiceOfUser($user_id, $old_service_id);
+			if ($userService) {
+				switch($userService->service_type) {
+					case 1:
+						$num = $userService->last_days;
+						break;
+					case 2:
+						$num = $userService->times;
+						break;
+					default:
+						return [
+							'success'=>false,
+							'message'=>'服务类型'.$userService->service_type.'不存在!'
+						];
+				}
+				$this->reduce($user_id, $old_service_id, $reduce_old_num?$reduce_old_num:$num);
+				$this->increase($user_id, $new_service_id, $increase_new_num?$increase_new_num:$num);
+				return [
+						'success'=>true,
+						'message'=>'成功转换服务!'
+				];
+			}else{
+				return [
+					'success'=>false,
+					'message'=>'被转换的服务不存在！'
+				];
+			}
+		}else{
+			return [
+				'success'=>false,
+				'message'=>'转换的服务不存在！'
+			];
+		}
+		
 	}
 	/**
 	 * 计算用户当前有效期/有效次数
@@ -210,6 +317,10 @@ class Service{
 								'tag'=>$logs->max('service_log_id')
 						]);
 					}
+					return [
+							'success'=>true,
+							'message'=>'用户服务信息已更新！'
+					];
 					break;
 				case 2:
 					$times = 0;
@@ -239,14 +350,22 @@ class Service{
 								'tag'=>$logs->max('service_log_id')
 						]);
 					}
+					return [
+							'success'=>true,
+							'message'=>'用户服务信息已更新！'
+					];
 					break;
 				default:
-					Log::error('服务类型不存在！');
-					abort(500,'服务类型不存在！');
+					return [
+							'success'=>false,
+							'message'=>'服务类型不存在!'
+					];
 			}
 		}else{
-			Log::error('服务不存在！');
-			abort(500);
+			return [
+					'success'=>false,
+					'message'=>'ID'.$service_id.'的服务不存在！'
+			];
 		}
 	}
 }
