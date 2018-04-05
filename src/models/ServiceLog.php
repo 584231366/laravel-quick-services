@@ -14,7 +14,7 @@ class ServiceLog extends Model
 	protected $fillable = [
 			'user_id',
 			'service_id',
-			'service_log_type', // 0:‘ˆ 1:ºı
+			'service_log_type', // 0:Â¢û 1:Âáè
 			'days',
 			'times',
 			'memo'

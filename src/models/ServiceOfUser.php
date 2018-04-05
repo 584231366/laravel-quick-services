@@ -13,6 +13,6 @@ class ServiceOfUser extends Model
 		'start_at',
 		'expirated_at',
 		'times',
-		'tag'
+		'last_id'
 	];
 }

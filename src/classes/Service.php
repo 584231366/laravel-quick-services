@@ -8,7 +8,7 @@ use ServiceExtention\Models\ServiceOfUser;
 use DB;
 class Service{
 	/**
-	 * Ôö¼Ó·şÎñÌìÊı»òÈÕÆÚ
+	 * å¢åŠ æœåŠ¡å¤©æ•°æˆ–æ—¥æœŸ
 	 * @param unknown $user_id
 	 * @param unknown $service_id
 	 * @param unknown $num
@@ -26,18 +26,18 @@ class Service{
 				default:
 					return [
 						'success'=>false,
-						'message'=>'·şÎñÀàĞÍ'.$service->service_type.'·şÎñÀàĞÍ²»´æÔÚ!'
+						'message'=>'æœåŠ¡ç±»å‹'.$service->service_type.'æœåŠ¡ç±»å‹ä¸å­˜åœ¨!'
 					];
 			}
 		}else{
 			return [
 				'success'=>false,
-				'message'=>'ID'.$service_id.'µÄ·şÎñ²»´æÔÚ£¡'
+				'message'=>'ID'.$service_id.'çš„æœåŠ¡ä¸å­˜åœ¨ï¼'
 			];
 		}
 	}
 	/**
-	 * ¼õÉÙ·şÎñÌìÊı»òÈÕÆÚ
+	 * å‡å°‘æœåŠ¡å¤©æ•°æˆ–æ—¥æœŸ
 	 * @param unknown $user_id
 	 * @param unknown $service_id
 	 * @param unknown $num
@@ -55,18 +55,18 @@ class Service{
 				default:
 					return [
 						'success'=>false,
-						'message'=>'·şÎñÀàĞÍ²»´æÔÚ!'
+						'message'=>'æœåŠ¡ç±»å‹ä¸å­˜åœ¨!'
 					];
 			}
 		}else{
 			return [
 				'success'=>false,
-				'message'=>'ID'.$service_id.'µÄ·şÎñ²»´æÔÚ£¡'
+				'message'=>'ID'.$service_id.'çš„æœåŠ¡ä¸å­˜åœ¨ï¼'
 			];
 		}
 	}
 	/**
-	 * Ôö¼Ó·şÎñµÄÌìÊı
+	 * å¢åŠ æœåŠ¡çš„å¤©æ•°
 	 * @param unknown $user_id
 	 * @param unknown $service_id
 	 * @param unknown $num
@@ -84,17 +84,17 @@ class Service{
 		if ($s) {
 			return [
 				'success'=>true,
-				'message'=>'·şÎñ³É¹¦ÑÓ³¤'.$num.'Ìì!'
+				'message'=>'æœåŠ¡æˆåŠŸå»¶é•¿'.$num.'å¤©!'
 			];
 		}else{
 			return [
 				'success'=>false,
-				'message'=>'·şÎñÑÓ³¤'.$num.'ÌìÊ§°Ü!'
+				'message'=>'æœåŠ¡å»¶é•¿'.$num.'å¤©å¤±è´¥!'
 			];
 		}
 	}
 	/**
-	 * Ôö¼Ó·şÎñµÄ´ÎÊı
+	 * å¢åŠ æœåŠ¡çš„æ¬¡æ•°
 	 * @param unknown $user_id
 	 * @param unknown $service_id
 	 * @param unknown $num
@@ -111,17 +111,17 @@ class Service{
 		if ($s) {
 			return [
 					'success'=>true,
-					'message'=>'³É¹¦Ôö¼Ó·şÎñ´ÎÊı'.$num.'´Î!'
+					'message'=>'æˆåŠŸå¢åŠ æœåŠ¡æ¬¡æ•°'.$num.'æ¬¡!'
 			];
 		}else{
 			return [
 					'success'=>false,
-					'message'=>'Ôö¼Ó·şÎñ´ÎÊı'.$num.'´ÎÊ§°Ü!'
+					'message'=>'å¢åŠ æœåŠ¡æ¬¡æ•°'.$num.'æ¬¡å¤±è´¥!'
 			];
 		}
 	}
 	/**
-	 * ¼õÉÙ·şÎñµÄÌìÊı
+	 * å‡å°‘æœåŠ¡çš„å¤©æ•°
 	 * @param unknown $user_id
 	 * @param unknown $service_id
 	 * @param unknown $num
@@ -138,17 +138,17 @@ class Service{
 		if ($s) {
 			return [
 					'success'=>true,
-					'message'=>'·şÎñ³É¹¦Ëõ¶Ì'.$num.'Ìì!'
+					'message'=>'æœåŠ¡æˆåŠŸç¼©çŸ­'.$num.'å¤©!'
 			];
 		}else{
 			return [
 					'success'=>false,
-					'message'=>'·şÎñËõ¶Ì'.$num.'ÌìÊ§°Ü!'
+					'message'=>'æœåŠ¡ç¼©çŸ­'.$num.'å¤©å¤±è´¥!'
 			];
 		}
 	}
 	/**
-	 * ¼õÉÙ·şÎñµÄ´ÎÊı
+	 * å‡å°‘æœåŠ¡çš„æ¬¡æ•°
 	 * @param unknown $user_id
 	 * @param unknown $service_id
 	 * @param unknown $num
@@ -165,17 +165,17 @@ class Service{
 		if ($s) {
 			return [
 					'success'=>true,
-					'message'=>'³É¹¦¼õÉÙ·şÎñ´ÎÊı'.$num.'´Î!'
+					'message'=>'æˆåŠŸå‡å°‘æœåŠ¡æ¬¡æ•°'.$num.'æ¬¡!'
 			];
 		}else{
 			return [
 					'success'=>false,
-					'message'=>'¼õÉÙ·şÎñ´ÎÊı'.$num.'´ÎÊ§°Ü!'
+					'message'=>'å‡å°‘æœåŠ¡æ¬¡æ•°'.$num.'æ¬¡å¤±è´¥!'
 			];
 		}
 	}
 	/**
-	 * »ñÈ¡ÓÃ»§µÄËùÓĞ·şÎñĞÅÏ¢
+	 * è·å–ç”¨æˆ·çš„æ‰€æœ‰æœåŠ¡ä¿¡æ¯
 	 * @param unknown $user_id
 	 * @return unknown
 	 */
@@ -196,7 +196,7 @@ class Service{
 			->get();
 	}
 	/**
-	 * È¡ÓÃ»§µÄÖ¸¶¨·şÎñĞÅÏ¢
+	 * å–ç”¨æˆ·çš„æŒ‡å®šæœåŠ¡ä¿¡æ¯
 	 * @param unknown $user_id
 	 * @param unknown $service_id
 	 * @return unknown
@@ -219,12 +219,12 @@ class Service{
 			->first();
 	}
 	/**
-	 * ·şÎñ×ª»»
+	 * æœåŠ¡è½¬æ¢
 	 * @param unknown $user_id
 	 * @param unknown $old_service_id
 	 * @param unknown $new_service_id
-	 * @param number $reduce_old_num Ä¬ÈÏÎª¾É·şÎñµÄÌìÊı/´ÎÊı
-	 * @param number $increase_new_num Ä¬ÈÏÎª¾É·şÎñµÄÌìÊı/´ÎÊı
+	 * @param number $reduce_old_num é»˜è®¤ä¸ºæ—§æœåŠ¡çš„å¤©æ•°/æ¬¡æ•°
+	 * @param number $increase_new_num é»˜è®¤ä¸ºæ—§æœåŠ¡çš„å¤©æ•°/æ¬¡æ•°
 	 * @return boolean[]|string[]
 	 */
 	public function changeService($user_id,$old_service_id,$new_service_id,$reduce_old_num = 0,$increase_new_num = 0) {
@@ -243,31 +243,31 @@ class Service{
 					default:
 						return [
 							'success'=>false,
-							'message'=>'·şÎñÀàĞÍ'.$userService->service_type.'²»´æÔÚ!'
+							'message'=>'æœåŠ¡ç±»å‹'.$userService->service_type.'ä¸å­˜åœ¨!'
 						];
 				}
 				$this->reduce($user_id, $old_service_id, $reduce_old_num?$reduce_old_num:$num);
 				$this->increase($user_id, $new_service_id, $increase_new_num?$increase_new_num:$num);
 				return [
 						'success'=>true,
-						'message'=>'³É¹¦×ª»»·şÎñ!'
+						'message'=>'æˆåŠŸè½¬æ¢æœåŠ¡!'
 				];
 			}else{
 				return [
 					'success'=>false,
-					'message'=>'±»×ª»»µÄ·şÎñ²»´æÔÚ£¡'
+					'message'=>'è¢«è½¬æ¢çš„æœåŠ¡ä¸å­˜åœ¨ï¼'
 				];
 			}
 		}else{
 			return [
 				'success'=>false,
-				'message'=>'×ª»»µÄ·şÎñ²»´æÔÚ£¡'
+				'message'=>'è½¬æ¢çš„æœåŠ¡ä¸å­˜åœ¨ï¼'
 			];
 		}
 		
 	}
 	/**
-	 * ¼ÆËãÓÃ»§µ±Ç°ÓĞĞ§ÆÚ/ÓĞĞ§´ÎÊı
+	 * è®¡ç®—ç”¨æˆ·å½“å‰æœ‰æ•ˆæœŸ/æœ‰æ•ˆæ¬¡æ•°
 	 * @param unknown $user_id
 	 * @param unknown $service_id
 	 */
@@ -280,33 +280,33 @@ class Service{
 					$start_at = null;
 					$expirated_at = null;
 					foreach ($logs as $key => $log) {
-						if ($key == 0) { // ³õ´Î¼ÇÂ¼ - ¼ÆËã¿ªÊ¼ºÍ¹ıÆÚÈÕÆÚ
+						if ($key == 0) { // åˆæ¬¡è®°å½• - è®¡ç®—å¼€å§‹å’Œè¿‡æœŸæ—¥æœŸ
 							$start_at = strtotime($log->created_at);
 							$expirated_at = strtotime($log->created_at) + $log->days*24*60*60;
 						}else{
 							switch ($log->service_log_type) {
-								case 0: // Ôö¼ÓÌìÊı
-									if (strtotime($log->created_at) < $expirated_at) { // ºóĞø¼ÇÂ¼ - ÅĞ¶Ï¼ÇÂ¼ÊÇ·ñÊÇÉÏ´Î¹ıÆÚÈÕÆÚÇ°Ìí¼Ó
+								case 0: // å¢åŠ å¤©æ•°
+									if (strtotime($log->created_at) < $expirated_at) { // åç»­è®°å½• - åˆ¤æ–­è®°å½•æ˜¯å¦æ˜¯ä¸Šæ¬¡è¿‡æœŸæ—¥æœŸå‰æ·»åŠ 
 										$expirated_at = $expirated_at + $log->days*24*60*60;
 									}else{
 										$start_at = strtotime($log->created_at);
 										$expirated_at = strtotime($log->created_at) + $log->days*24*60*60;
 									}
 									break;
-								case 1: // ¼õÉÙÌìÊı
-									if (strtotime($log->created_at) < $expirated_at) { // ºóĞø¼ÇÂ¼ - ÅĞ¶Ï¼ÇÂ¼ÊÇ·ñÊÇÉÏ´Î¹ıÆÚÈÕÆÚÇ°Ìí¼Ó
+								case 1: // å‡å°‘å¤©æ•°
+									if (strtotime($log->created_at) < $expirated_at) { // åç»­è®°å½• - åˆ¤æ–­è®°å½•æ˜¯å¦æ˜¯ä¸Šæ¬¡è¿‡æœŸæ—¥æœŸå‰æ·»åŠ 
 										$expirated_at = $expirated_at - $log->days*24*60*60;
 									}
 							}
 						}
 					}
-					if (ServiceOfUser::where(['service_id'=>$service_id,'user_id'=>$user_id])->count()) { // ÅĞ¶Ï¼ÇÂ¼ÊÇ·ñ´æÔÚ
+					if (ServiceOfUser::where(['service_id'=>$service_id,'user_id'=>$user_id])->count()) { // åˆ¤æ–­è®°å½•æ˜¯å¦å­˜åœ¨
 						ServiceOfUser::where(['service_id'=>$service_id,'user_id'=>$user_id])
-							->where('tag','<',$logs->max('service_log_id'))
+							->where('last_id','<',$logs->max('service_log_id'))
 							->update([
 								'start_at'=>date('Y-m-d H:i:s',$start_at),
 								'expirated_at'=>date('Y-m-d H:i:s',$expirated_at),
-								'tag'=>$logs->max('service_log_id')
+								'last_id'=>$logs->max('service_log_id')
 							]);
 					}else{
 						ServiceOfUser::create([
@@ -314,57 +314,57 @@ class Service{
 								'expirated_at'=>date('Y-m-d H:i:s',$expirated_at),
 								'service_id'=>$service_id,
 								'user_id'=>$user_id,
-								'tag'=>$logs->max('service_log_id')
+								'last_id'=>$logs->max('service_log_id')
 						]);
 					}
 					return [
 							'success'=>true,
-							'message'=>'ÓÃ»§·şÎñĞÅÏ¢ÒÑ¸üĞÂ£¡'
+							'message'=>'ç”¨æˆ·æœåŠ¡ä¿¡æ¯å·²æ›´æ–°ï¼'
 					];
 					break;
 				case 2:
 					$times = 0;
 					foreach ($logs as $key => $log) {
 						switch ($log->service_log_type) {
-							case 0: // Ôö¼Ó´ÎÊı
+							case 0: // å¢åŠ æ¬¡æ•°
 								$times = $times + $log->times;
 								break;
-							case 1: // ¼õÉÙ´ÎÊı
+							case 1: // å‡å°‘æ¬¡æ•°
 								$times = $times - $log->times;
 								$times = $times<0?0:$times;
 								break;
 						}
 					}
-					if (ServiceOfUser::where(['service_id'=>$service_id,'user_id'=>$user_id])->count()) { // ÅĞ¶Ï¼ÇÂ¼ÊÇ·ñ´æÔÚ
+					if (ServiceOfUser::where(['service_id'=>$service_id,'user_id'=>$user_id])->count()) { // åˆ¤æ–­è®°å½•æ˜¯å¦å­˜åœ¨
 						ServiceOfUser::where(['service_id'=>$service_id,'user_id'=>$user_id])
-							->where('tag','<',$logs->max('service_log_id'))
+							->where('last_id','<',$logs->max('service_log_id'))
 							->update([
 									'times'=>$times,
-									'tag'=>$logs->max('service_log_id')
+									'last_id'=>$logs->max('service_log_id')
 							]);
 					}else{
 						ServiceOfUser::create([
 								'times'=>$times,
 								'service_id'=>$service_id,
 								'user_id'=>$user_id,
-								'tag'=>$logs->max('service_log_id')
+								'last_id'=>$logs->max('service_log_id')
 						]);
 					}
 					return [
 							'success'=>true,
-							'message'=>'ÓÃ»§·şÎñĞÅÏ¢ÒÑ¸üĞÂ£¡'
+							'message'=>'ç”¨æˆ·æœåŠ¡ä¿¡æ¯å·²æ›´æ–°ï¼'
 					];
 					break;
 				default:
 					return [
 							'success'=>false,
-							'message'=>'·şÎñÀàĞÍ²»´æÔÚ!'
+							'message'=>'æœåŠ¡ç±»å‹ä¸å­˜åœ¨!'
 					];
 			}
 		}else{
 			return [
 					'success'=>false,
-					'message'=>'ID'.$service_id.'µÄ·şÎñ²»´æÔÚ£¡'
+					'message'=>'ID'.$service_id.'çš„æœåŠ¡ä¸å­˜åœ¨ï¼'
 			];
 		}
 	}

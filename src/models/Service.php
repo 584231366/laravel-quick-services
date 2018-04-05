@@ -9,7 +9,7 @@ class Service extends Model
 	protected $table = 'service';
 	protected $fillable = [
 		'service_name',
-		'service_type', // 1:天数;2:次数
+		'service_type', // 1:澶╂暟;2:娆℃暟
 		'service_desc'
 	];
 }

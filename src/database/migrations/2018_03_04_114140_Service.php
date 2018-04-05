@@ -14,10 +14,10 @@ class Service extends Migration
     public function up()
     {
         Schema::create('service', function (Blueprint $table) {
-            $table->increments('service_id');
-            $table->string('service_name');
-            $table->integer('service_type');
-            $table->string('service_desc');
+            $table->increments('service_id')->comment('服务ID');
+            $table->string('service_name')->comment('服务名称');
+            $table->integer('service_type')->comment('服务类型 1:日期 2:次数');
+            $table->string('service_desc')->comment('服务说明');
             $table->timestamps();
         });
     }
