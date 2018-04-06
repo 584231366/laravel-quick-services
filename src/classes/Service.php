@@ -6,6 +6,7 @@ use ServiceExtention\Models\ServiceLog;
 use Log;
 use ServiceExtention\Models\ServiceOfUser;
 use DB;
+use ServiceExtention\Models\ServiceOptions;
 class Service{
 	/**
 	 * 增加服务天数或日期
@@ -368,4 +369,17 @@ class Service{
 			];
 		}
 	}
+	/**
+	 * 获取模型
+	 * @param unknown $name  'options', 'status', 'service', 'log'
+	 */
+	public function model($name){
+		switch ($name) {
+			case 'service': return new ServiceModel();
+			case 'options': return new ServiceOptions();
+			case 'status': return new ServiceOfUser();
+			case 'log': return new ServiceLog();
+			default: return  null;
+		}
+	} 
 }
